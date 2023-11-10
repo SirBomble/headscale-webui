@@ -69,18 +69,18 @@ if AUTH_TYPE == "oidc":
         }
     )
 
-    with open("./app/instance/secrets.json", "w+") as secrets_json:
+    with open("/app/instance/secrets.json", "w+") as secrets_json:
         secrets_json.write(client_secrets)
     app.logger.debug("Client Secrets:  ")
-    with open("./app/instance/secrets.json", "r+") as secrets_json:
-        app.logger.debug("./app/instances/secrets.json:")
+    with open("/app/instance/secrets.json", "r+") as secrets_json:
+        app.logger.debug("/app/instances/secrets.json:")
         app.logger.debug(secrets_json.read())
     
     app.config.update({
         'SECRET_KEY': secrets.token_urlsafe(32),
         'TESTING': DEBUG_STATE,
         'DEBUG': DEBUG_STATE,
-        'OIDC_CLIENT_SECRETS': './app/instance/secrets.json',
+        'OIDC_CLIENT_SECRETS': '/app/instance/secrets.json',
         'OIDC_ID_TOKEN_COOKIE_SECURE': True,
         'OIDC_REQUIRE_VERIFIED_EMAIL': False,
         'OIDC_USER_INFO_ENABLED': True,
